@@ -8,19 +8,15 @@ public class App {
         //Limitar o nome a 12 caracteres
         Account account = new Account("0001","0001", "Thiago");
 
-        System.out.println(account.getName());
+       
+        account.withDraw(100.00);
 
         account.deposit(100.0);
 
-        account.withDraw(20.0);
-
         account.deposit(100.0);
         
-        account.deposit(100.0);
+        account.withDraw(100.00);
 
-        
-        
-        //Sacar valores respeitando condições (sacar mais do que tem)
         //Informar ao usuário as alterações
 
     }

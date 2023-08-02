@@ -2,18 +2,22 @@ package bank;
 
 public class Account {
 
+  //Limitar o nome a 12 caracteres "Constante"
+  private static final int MAX_LENGTH = 12;
+
+
   private String ag;
   private String cc;
   private String name;
   private Double balance = 0.00;
-
-  //Limitar o nome a 12 caracteres "Constante"
-  private static final int MAX_LENGTH = 12;
-
+  private Display logger;
+  
+  //Construtor
   public Account(String ag, String cc, String name){
     this.ag = ag;
     this.cc = cc;
     setName(name);
+    logger = new Display();
   }
 
   //Verifica se o nome tem o temanho certo, caso não tenha ele corta
@@ -33,11 +37,11 @@ public class Account {
   //Saque
   public void withDraw(Double value){
     if(value>balance){
-      System.out.println("Valor insuficiente para efetuar saque, tente novamente.");
+      logger.out("Saldo insuficiente para realizar saque.");
     } else {
       balance-=value;
-      System.out.println("Saque efetuado com sucesso");
-      System.out.println("Novo saldo: " + balance);
+      logger.out("Saque no valor de: "+ value +" efetuado com sucesso!");
+      logger.out("Novo saldo: " + balance);
     }
 
   }
@@ -46,11 +50,10 @@ public class Account {
 
   public void deposit(Double value){
     if(value<=0){
-      System.out.println("Valor insuficiente para efetuar depósito, tente novamente.");
+      logger.out("Impossivel realizar operação, digite um valor válido para o depósito");
     } else {
       balance+=value;
-      System.out.println("Depósito efetuado com sucesso");
-      System.out.println("Novo saldo: " + balance);
+      logger.out("Novo saldo: " + balance);
     }
   }
 
